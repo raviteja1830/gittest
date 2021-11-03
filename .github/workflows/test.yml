@@ -1,0 +1,17 @@
+name: Test
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/chechout@v2
+      - name: setup python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      
+      - name: Install dependencies with pipenv
+        run: |
+          python manage.py test
